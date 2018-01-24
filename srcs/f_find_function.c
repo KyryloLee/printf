@@ -49,7 +49,6 @@ void	f_length(t_flgs *input, t_prf *new, char **res)
 
 void	f_flags(t_flgs *input, t_prf *new, char **res)
 {
-									// printf("input res -\t[%s]\n", *res);
 	f_accurancy(input, new, res);
 	if (input->length)
 	{
@@ -83,6 +82,7 @@ int		find_func(t_flgs *input, char **res, va_list ap)
 			}
 			else
 				new->f(res, ap);
+																	// printf("[%s]\n", new->type);
 			f_flags(input, new, res);
 			break ;
 		}

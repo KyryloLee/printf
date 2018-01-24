@@ -12,8 +12,18 @@
 
 #include "ft_printf.h"
 
+void	f_type_bd(char **res, intmax_t input)
+{
+	char	*s;
+
+	s = ft_itoa((long int)input);
+	f_join_free(res, s);
+	free(s);
+}
+
 void	f_type_nope(char **res, va_list ap)
 {
-	if (ap && res)
+	f_join_free(res, "");
+	if (ap)
 		;
 }

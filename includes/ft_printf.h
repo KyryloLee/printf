@@ -76,5 +76,6 @@ int					f_len_nbr(int nbr);
 void				c_jf(char **str, char in);
 int					f_a_l_s(char *str, t_flgs **fnt);
 t_flgs				*analys_str(char **str);
+void				f_type_bd(char **res, intmax_t input);
 
 #endif

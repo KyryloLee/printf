@@ -70,19 +70,15 @@ t_flgs	*analys_str(char **str)
 	while (*tmp)
 	{
 		if (ft_strchr("-+ #0.123456789zjlh", tmp[0]))
-		{
 			tmp += f_a_l_s(*str, &fnt);
-		}
-		if (ft_strchr("sSpdDioOuUxXcC", tmp[0]))
+		if (ft_strchr("sSpdDioOuUxXcC%", tmp[0]))
 		{
 			c_jf(&(fnt)->type, tmp[0]);
 			tmp++;
 			break ;
 		}
 		if (ft_strchr("-+# 0123456789zjlh", tmp[0]))
-		{
 			tmp++;
-		}
 		if (ft_strchr("+- 0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
 		{
 			c_jf(&(fnt)->type, tmp[0]);
@@ -90,8 +86,8 @@ t_flgs	*analys_str(char **str)
 		}
 		tmp++;
 	}
-	*str = tmp;																			
-																					// printf("result *str after analys function-\t[%s]\n", tmp);
+	*str = tmp;
+																				// printf("result *str after analys function-\t[%s]\n", tmp);
 	return (fnt);
 }
 
@@ -126,7 +122,8 @@ char	*f_srch(char *str, va_list ap)
 																				// printf("result str after analys function-\t[%s]\n", str);
 			find_func(input, &res, ap);
 			del_flag_list(&input);
-			f_join_free(&just_words, res);																	// printf("result ater analys-\t|%s|\n", res);
+			f_join_free(&just_words, res);	
+																		// printf("result ater analys-\t|%s|\n", res);
 		}
 		while (str[0] != '%' && *str)
 		{

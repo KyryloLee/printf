@@ -16,7 +16,7 @@ void	f_type_d(char **res, intmax_t input)
 {
 	char	*s;
 
-	s = ft_itoa(input);
+	s = ft_itoa((int)input);
 	f_join_free(res, s);
 	free(s);
 }

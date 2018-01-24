@@ -39,7 +39,7 @@ void	f_type_bc(char **res, va_list ap)
 
 void	f_type_prcn(char **res, va_list ap)
 {
-	// f_join_free(res, "%");
+	f_join_free(res, "%");
 	if (ap && res)
 		;
 }
