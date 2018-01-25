@@ -43,7 +43,7 @@ $(NAME):
 	@ranlib $(NAME)
 
 clean:
-	@rm -f *.o
+	@rm -f $(OBJECT)
 	@make clean -C libft
 
 fclean: clean
