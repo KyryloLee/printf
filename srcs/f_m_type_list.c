@@ -66,7 +66,7 @@ t_prf			*type_list(void)
 	f_listadd_t(&test_new, f_listnew("S", "-0", "l", &f_type_s));
 	f_listadd_t(&test_new, f_listnew("c", "-0", "l", &f_type_c));
 	f_listadd_t(&test_new, f_listnew("C", "-0", "l", &f_type_bc));
-	// f_listadd_t(&test_new, f_listnew("", "", "", &f_type_nope));
+	f_listadd_t(&test_new, f_listnew("r", "", "z", &f_type_nope));
 	return (test_new);
 }
 

@@ -32,15 +32,27 @@ void	f_type_bx(char **res, intmax_t input)
 
 void	f_type_o(char **res, intmax_t input)
 {
-	f_join_free(res, f_itoa_base_a(input, 8));
+	char	*str;
+
+	str = f_itoa_base_a(input, 8);
+	f_join_free(res, str);
+	free(str);
 }
 
 void	f_type_x(char **res, intmax_t input)
 {
-	f_join_free(res, f_itoa_base_a(input, 16));
+	char			*str;
+
+	str = str_to_upper(f_itoa_base_a(input, 16));
+	f_join_free(res, str);
+	free(str);
 }
 
 void	f_type_u(char **res, intmax_t input)
 {
-	f_join_free(res, ft_itoa(input));
+	char *str;
+
+	str = ft_itoa(input);
+	f_join_free(res, str);
+	free(str);
 }

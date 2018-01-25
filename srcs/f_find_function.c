@@ -36,15 +36,9 @@ void	f_length_dop(t_flgs *input, char **res)
 void	f_length(t_flgs *input, t_prf *new, char **res)
 {
 	if (input->length)
-	{
-		if (input->accuracy == 0 && ft_strstr(input->flags, "0"))
-		{
-			input->accuracy = input->length;
-			f_accurancy(input, new, res);
-		}
-		else
 			f_length_dop(input, res);
-	}
+	if (new)
+		;
 }
 
 void	f_flags(t_flgs *input, t_prf *new, char **res)

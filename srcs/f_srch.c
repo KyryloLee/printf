@@ -58,7 +58,7 @@ int		f_a_l_s(char *str, t_flgs **fnt)
 	return (i);
 }
 
-t_flgs	*analys_str(char **str)
+t_flgs	*analys_str(char **str, char **res)
 {
 	t_flgs	*fnt;
 	int		i;
@@ -79,9 +79,11 @@ t_flgs	*analys_str(char **str)
 		}
 		if (ft_strchr("-+# 0123456789zjlh", tmp[0]))
 			tmp++;
-		if (ft_strchr("+- 0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
+		if (!ft_strchr("+- 0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
 		{
-			c_jf(&(fnt)->type, tmp[0]);
+			c_jf(res, tmp[0]);
+			c_jf(&(fnt)->type, 'r');
+			tmp++;
 			break ;
 		}
 		tmp++;
@@ -97,7 +99,7 @@ void	put_analys(t_flgs *input)
 	printf("length - \t%d\n", input->length);
 	printf("accuracy - \t%d\n", input->accuracy);
 	printf("size - \t%s\n", input->size);
-	printf("type - \t%s\n", input->type);
+	printf("type - \t%s\n\n", input->type);
 
 }
 
@@ -117,7 +119,7 @@ char	*f_srch(char *str, va_list ap)
 		if (*str == '%')
 		{
 			str++;
-			input = analys_str(&str);
+			input = analys_str(&str, &res);
 																				// put_analys(input);
 																				// printf("result str after analys function-\t[%s]\n", str);
 			find_func(input, &res, ap);

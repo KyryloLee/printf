@@ -81,10 +81,10 @@ void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
 	{
 		tmp = f_strnew_null(-n[0]);
 		f_join_free_b(res, tmp);
-		(n[1] = 1) ? f_join_free_b(res, "-") : 1 - 1;
-		(n[1] = 2) ? f_join_free_b(res, "0x") : 1 - 1;
 		free(tmp);
 	}
+	(n[1] == 1) ? f_join_free_b(res, "-") : 1 - 1;
+	(n[1] == 2) ? f_join_free_b(res, "0x") : 1 - 1;
 }
 
 void	f_accurancy(t_flgs *input, t_prf *new, char **res)
