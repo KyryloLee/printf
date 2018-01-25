@@ -34,27 +34,27 @@ void	c_jf(char **str, char in)
 	f_join_free(str, c);
 }
 
-int		f_a_l_s(char *str, t_flgs **fnt)
+int		f_a_l_s(char *tmp, t_flgs **fnt)
 {
 	int		i;
 
 	i = 0;
-	if (ft_strchr("-+ #", str[i]))
-		c_jf(&(*fnt)->flags, str[i++]);
-	if (str[i] == '0' && ft_strchr("+- #hlzj%", str[i - 1]))
-		c_jf(&(*fnt)->flags, str[i++]);
-	if (str[i] == '.')
+	if (ft_strchr("-+ #", tmp[i]))
+		c_jf(&(*fnt)->flags, tmp[i++]);
+	else if (tmp[i] == '0' && ft_strchr("+- #hlzj%", tmp[i - 1]))
+		c_jf(&(*fnt)->flags, tmp[i++]);
+	else if (tmp[i] == '.')
 	{
-		(*fnt)->accuracy = ft_atoi(str + i + 1);
+		(*fnt)->accuracy = ft_atoi(tmp + i + 1);
 		i = i + f_len_nbr((*fnt)->accuracy) + 1;
 	}
-	if (ft_strchr("123456789", str[i]))
+	else if (ft_strchr("123456789", tmp[i]))
 	{
-		(*fnt)->length = ft_atoi(str + i);
+		(*fnt)->length = ft_atoi(tmp + i);
 		i = i + f_len_nbr((*fnt)->length);
 	}
-	if (ft_strchr("zjlh", str[i]))
-		c_jf(&(*fnt)->size, str[i++]);
+	else if (ft_strchr("zjlh", tmp[i]))
+		c_jf(&(*fnt)->size, tmp[i++]);
 	return (i);
 }
 
@@ -70,23 +70,21 @@ t_flgs	*analys_str(char **str, char **res)
 	while (*tmp)
 	{
 		if (ft_strchr("-+ #0.123456789zjlh", tmp[0]))
-			tmp += f_a_l_s(*str, &fnt);
+			tmp += f_a_l_s(tmp, &fnt);
 		if (ft_strchr("sSpdDioOuUxXcC%", tmp[0]))
 		{
 			c_jf(&(fnt)->type, tmp[0]);
 			tmp++;
 			break ;
 		}
-		if (ft_strchr("-+# 0123456789zjlh", tmp[0]))
-			tmp++;
-		if (!ft_strchr("+- 0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
+		if (!ft_strchr("+- #.0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
 		{
+			printf("before break the while -\t[%s]\n", tmp);
 			c_jf(res, tmp[0]);
 			c_jf(&(fnt)->type, 'r');
 			tmp++;
 			break ;
 		}
-		tmp++;
 	}
 	*str = tmp;
 																				// printf("result *str after analys function-\t[%s]\n", tmp);
