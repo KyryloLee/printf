@@ -57,7 +57,7 @@ t_prf			*type_list(void)
 	f_listadd_t(&test_new, f_listnew("x", "-0#", "hlzj", &f_type_x));
 	f_listadd_t(&test_new, f_listnew("o", "-0#", "hlzj", &f_type_o));
 	f_listadd_t(&test_new, f_listnew("O", "-0#", "hlzj", &f_type_o));
-	f_listadd_t(&test_new, f_listnew("%", "", "z", &f_type_prcn));
+	f_listadd_t(&test_new, f_listnew("%", "0", "z", &f_type_prcn));
 	f_listadd_t(&test_new, f_listnew("d", "-+0 ", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("D", "-+0 ", "hlzj", &f_type_bd));
 	f_listadd_t(&test_new, f_listnew("u", "-0 ", "hlzj", &f_type_u));

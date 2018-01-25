@@ -94,6 +94,7 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 
 	tmp = *res;
 	n[0] = ft_strlen(*res) - input->accuracy;
+									// printf("len - \t%jd [%s]\n", n[0], *res);
 	n[1] = 0;
 	if (ft_strchr(new->size, 'z'))
 	{

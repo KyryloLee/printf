@@ -41,7 +41,7 @@ int		f_a_l_s(char *tmp, t_flgs **fnt)
 	i = 0;
 	if (ft_strchr("-+ #", tmp[i]))
 		c_jf(&(*fnt)->flags, tmp[i++]);
-	else if (tmp[i] == '0' && ft_strchr("+- #hlzj%", tmp[i - 1]))
+	else if (tmp[i] == '0')
 		c_jf(&(*fnt)->flags, tmp[i++]);
 	else if (tmp[i] == '.')
 	{
@@ -85,8 +85,6 @@ t_flgs	*analys_str(char **str, char **res)
 			tmp++;
 			break ;
 		}
-		else
-			tmp++;
 	}
 	*str = tmp;
 																				// printf("result *str after analys function-\t[%s]\n", tmp);

@@ -55,7 +55,8 @@ void	f_flags(t_flgs *input, t_prf *new, char **res)
 			f_length(input, new, res);
 	}
 	if (ft_strstr(input->flags, "#") && ft_strstr(new->flags, "#"))
-		f_join_free_b(res, "0x");
+		ft_strstr(input->type, "x") ? f_join_free_b(res, "0x") :
+	f_join_free_b(res, "0");
 }
 
 int		find_func(t_flgs *input, char **res, va_list ap)
