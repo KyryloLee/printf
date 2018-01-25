@@ -43,7 +43,7 @@ void	f_type_x(char **res, intmax_t input)
 {
 	char			*str;
 
-	str = str_to_upper(f_itoa_base_a(input, 16));
+	str = f_itoa_base_a(input, 16);
 	f_join_free(res, str);
 	free(str);
 }

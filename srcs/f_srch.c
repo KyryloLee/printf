@@ -79,12 +79,14 @@ t_flgs	*analys_str(char **str, char **res)
 		}
 		if (!ft_strchr("+- #.0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
 		{
-			printf("before break the while -\t[%s]\n", tmp);
+													// printf("before break the while -\t[%s]\n", tmp);
 			c_jf(res, tmp[0]);
 			c_jf(&(fnt)->type, 'r');
 			tmp++;
 			break ;
 		}
+		else
+			tmp++;
 	}
 	*str = tmp;
 																				// printf("result *str after analys function-\t[%s]\n", tmp);
