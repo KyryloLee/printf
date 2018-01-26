@@ -28,7 +28,7 @@ intmax_t		len_nbr(intmax_t nbr)
 char			*ft_itoa(intmax_t nbr)
 {
 	char					*res;
-	intmax_t				r;
+	uintmax_t				r;
 	intmax_t				d;
 	intmax_t				i;
 

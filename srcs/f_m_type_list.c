@@ -77,9 +77,9 @@ intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 	else if (ft_strstr(input->size, "j"))
 		return (va_arg(ap, intmax_t));
 	else if (ft_strstr(input->size, "ll"))
-		return (va_arg(ap, long long int));
+		return (va_arg(ap, long long));
 	else if (ft_strstr(input->size, "l"))
-		return (va_arg(ap, long int));
+		return (va_arg(ap, long));
 	else if (ft_strstr(input->size, "h") && !ft_strstr(input->size, "hh"))
 		return ((short int)va_arg(ap, int));
 	else if (ft_strstr(input->size, "hh"))
