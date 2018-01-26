@@ -77,5 +77,7 @@ void				c_jf(char **str, char in);
 int					f_a_l_s(char *str, t_flgs **fnt);
 t_flgs				*analys_str(char **str, char **res);
 void				f_type_bd(char **res, intmax_t input);
+intmax_t			dop_size_nbr(t_flgs *input, va_list ap);
+intmax_t			dop_size_nbr2(t_flgs *input, va_list ap);
 
 #endif

@@ -20,9 +20,6 @@ char			*f_itoa_base_a(intmax_t n, int base)
 
 	add[1] = '\0';
 	i = n;
-	// if (n < 0)
-	// 	c = ft_strdup("-");
-	// else
 		c = ft_strdup("");
 	recursio_i_a(&c, i, base);
 	return (c);
@@ -75,19 +72,21 @@ intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));
 	else if (ft_strstr(input->size, "j"))
-		return (va_arg(ap, intmax_t));
+	{
+		if (ft_strstr(input->type, "u"))
+			return (va_arg(ap, uintmax_t));
+		else
+			return (va_arg(ap, intmax_t));
+	}
 	else if (ft_strstr(input->size, "ll"))
-		return (va_arg(ap, long long));
-	else if (ft_strstr(input->size, "l"))
-		return (va_arg(ap, long));
-	else if (ft_strstr(input->size, "h") && !ft_strstr(input->size, "hh"))
-		return ((short int)va_arg(ap, int));
-	else if (ft_strstr(input->size, "hh"))
-		return ((char)va_arg(ap, int));
-	else if (input->type[0] == 'd')
-		return (va_arg(ap, int));
-	else if (input->type[0] == 'D')
-		return (va_arg(ap, long int));
+	{
+		if (ft_strstr(input->type, "u"))
+			return (va_arg(ap, unsigned long long));
+		else
+			return (va_arg(ap, long long));
+	}
+	else if (ft_one_equ(input->size, "lhdD"))
+		return (dop_size_nbr(input, ap));
 	else
 		return (va_arg(ap, unsigned int));
 }
