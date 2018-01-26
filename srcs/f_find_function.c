@@ -44,6 +44,13 @@ void	f_length(t_flgs *input, t_prf *new, char **res)
 void	f_flags(t_flgs *input, t_prf *new, char **res)
 {
 	f_accurancy(input, new, res);
+	if (ft_strstr(input->flags, "#") && ft_strstr(new->flags, "#"))
+	{
+		if (ft_strstr(input->type, "x") || ft_strstr(input->type, "X"))
+			ft_strstr(input->type, "x") ? f_join_free_b(res, "0x") : f_join_free_b(res, "0X");
+		else
+			f_join_free_b(res, "0");
+	}
 	if (input->length)
 	{
 		if (input->accuracy == 0 && ft_strstr(input->flags, "0"))
@@ -54,9 +61,7 @@ void	f_flags(t_flgs *input, t_prf *new, char **res)
 		else
 			f_length(input, new, res);
 	}
-	if (ft_strstr(input->flags, "#") && ft_strstr(new->flags, "#"))
-		ft_strstr(input->type, "x") ? f_join_free_b(res, "0x") :
-	f_join_free_b(res, "0");
+	
 }
 
 int		find_func(t_flgs *input, char **res, va_list ap)

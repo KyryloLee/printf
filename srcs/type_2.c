@@ -43,6 +43,7 @@ void	f_type_x(char **res, intmax_t input)
 {
 	char			*str;
 
+							// printf("input in type function=\t[%jd]\n", input);
 	str = f_itoa_base_a(input, 16);
 	f_join_free(res, str);
 	free(str);

@@ -80,7 +80,7 @@ void	f_wchar_t(char **res, intmax_t n)
 	}
 }
 
-void	recursio_i_a(char **str, intmax_t i, int base)
+void	recursio_i_a(char **str, uintmax_t i, int base)
 {
 	char			*f_base;
 	char			c[2];
@@ -88,9 +88,8 @@ void	recursio_i_a(char **str, intmax_t i, int base)
 	c[1] = 0;
 	c[0] = 0;
 	f_base = "0123456789abcdef";
-	if (i > 0)
+	if (i / base > 0)
 		recursio_i_a(str, i / base, base);
-	if (i)
-		c[0] = f_base[(i - (i / base * base))];
+	c[0] = f_base[(i - (i / base * base))];
 	f_join_free(str, c);
 }

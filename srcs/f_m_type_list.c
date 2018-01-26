@@ -16,13 +16,13 @@ char			*f_itoa_base_a(intmax_t n, int base)
 {
 	char			*c;
 	char			add[2];
-	intmax_t		i;
+	uintmax_t		i;
 
 	add[1] = '\0';
-	i = n > 0 ? n : -n;
-	if (n < 0)
-		c = ft_strdup("-");
-	else
+	i = n;
+	// if (n < 0)
+	// 	c = ft_strdup("-");
+	// else
 		c = ft_strdup("");
 	recursio_i_a(&c, i, base);
 	return (c);
