@@ -118,7 +118,7 @@ char	*f_srch(char *str, va_list ap)
 		{
 			str++;
 			input = analys_str(&str, &res);
-																				put_analys(input);
+																				// put_analys(input);
 																				// printf("result str after analys function-\t[%s]\n", str);
 			find_func(input, &res, ap);
 			del_flag_list(&input);
