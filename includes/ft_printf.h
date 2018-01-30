@@ -56,7 +56,7 @@ void				f_type_d(char **res, intmax_t input);
 void				f_type_bx(char **res, intmax_t input);
 void				f_type_o(char **res, intmax_t input);
 void				f_type_x(char **res, intmax_t input);
-void				f_type_u(char **res, intmax_t input);
+void				f_type_u(char **res, unsigned long long input);
 void				f_type_nope(char **res, va_list ap);
 void				f_listadd_t(t_prf **src, t_prf *new);
 t_prf				*type_list(void);
@@ -79,5 +79,8 @@ t_flgs				*analys_str(char **str, char **res);
 void				f_type_bd(char **res, intmax_t input);
 intmax_t			dop_size_nbr(t_flgs *input, va_list ap);
 intmax_t			dop_size_nbr2(t_flgs *input, va_list ap);
+void				f_flag_plus(t_flgs *input, t_prf *new, char **res);
+void				f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res);
+void				f_accurancy_length(t_flgs *input, t_prf *new, char **res);
 
 #endif

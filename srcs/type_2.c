@@ -16,7 +16,7 @@ void	f_type_d(char **res, intmax_t input)
 {
 	char	*s;
 
-	s = ft_itoa(input); 
+	s = ft_itoa(input);
 	f_join_free(res, s);
 	free(s);
 }
@@ -48,11 +48,12 @@ void	f_type_x(char **res, intmax_t input)
 	free(str);
 }
 
-void	f_type_u(char **res, intmax_t input)
+void	f_type_u(char **res, unsigned long long input)
 {
 	char *str;
 
-	str = ft_itoa(input);
+	// printf("f_type_u-\t[%llu]\n", input);
+	str = ft_itoa_u((unsigned long long)input);
 	f_join_free(res, str);
 	free(str);
 }

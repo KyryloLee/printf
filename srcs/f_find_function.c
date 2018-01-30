@@ -21,7 +21,8 @@ void	f_length_dop(t_flgs *input, char **res)
 	n[0] = ft_strlen(*res) - input->length;
 	if (n[0] < 0)
 	{
-		if (ft_strstr(input->flags, "0") && !ft_strstr(input->flags, "-"))
+		if (ft_strstr(input->flags, "0") && !ft_strstr(input->flags, "-") &&\
+			!input->accuracy)
 			tmp = f_strnew_null(-n[0]);
 		else
 			tmp = f_strnew_spc(-n[0]);
@@ -36,32 +37,35 @@ void	f_length_dop(t_flgs *input, char **res)
 void	f_length(t_flgs *input, t_prf *new, char **res)
 {
 	if (input->length)
-			f_length_dop(input, res);
+		f_length_dop(input, res);
 	if (new)
 		;
 }
 
 void	f_flags(t_flgs *input, t_prf *new, char **res)
 {
-	f_accurancy(input, new, res);
-	if (ft_strstr(input->flags, "#") && ft_strstr(new->flags, "#") && *res[0] != '0')
+	f_flag_plus(input, new, res);
+	if (ft_strstr(input->flags, "#") &&\
+		ft_strstr(new->flags, "#") && *res[0] != '0')
 	{
-		if (ft_strstr(input->type, "x") || ft_strstr(input->type, "X"))
-			ft_strstr(input->type, "x") ? f_join_free_b(res, "0x") : f_join_free_b(res, "0X");
+		if (ft_one_equ(input->type, "xX"))
+			ft_strstr(input->type, "x") ?\
+		f_join_free_b(res, "0x") : f_join_free_b(res, "0X");
 		else
 			f_join_free_b(res, "0");
 	}
+	f_accurancy(input, new, res);
 	if (input->length)
 	{
-		if (input->accuracy == 0 && ft_strstr(input->flags, "0") && !ft_strstr(input->flags, "-"))
+		if (input->accuracy == 0 && ft_strstr(input->flags, "0")\
+			&& !ft_strstr(input->flags, "-"))
 		{
-			input->accuracy = input->length;
-			f_accurancy(input, new, res);
+			input->accuracy = ft_strstr(*res, "0x") ? input->length - 2 : input->length;
+			f_accurancy_length(input, new, res);
 		}
 		else
 			f_length(input, new, res);
 	}
-	
 }
 
 int		find_func(t_flgs *input, char **res, va_list ap)
@@ -82,7 +86,7 @@ int		find_func(t_flgs *input, char **res, va_list ap)
 			}
 			else
 				new->f(res, ap);
-																	// printf("[%s]\n", new->type);
+																					// printf("[%s]\n", new->type);
 			f_flags(input, new, res);
 			break ;
 		}

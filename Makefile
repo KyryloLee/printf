@@ -21,7 +21,8 @@ SRCS = f_accurancy_and_other.c\
 	lists.c\
 	type_1.c\
 	type_2.c\
-	type_3.c
+	type_3.c\
+	f_flags_plus.c
 
 SRCS_PREFIX = srcs
 

@@ -26,6 +26,7 @@ typedef struct	s_list
 }				t_list;
 
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+char			*ft_itoa_u(unsigned long long nbr);
 char			*ft_itoa(intmax_t nbr);
 void			ft_striter(char *s, void (*f)(char*));
 size_t			ft_strlcat(char *s1, const char *s2, size_t size);

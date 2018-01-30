@@ -1,77 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   f_accurancy_and_other.c                            :+:      :+:    :+:   */
+/*   f_flags_plus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/23 12:36:22 by klee              #+#    #+#             */
-/*   Updated: 2018/01/23 12:36:24 by klee             ###   ########.fr       */
+/*   Created: 2018/01/29 14:37:20 by klee              #+#    #+#             */
+/*   Updated: 2018/01/29 14:37:22 by klee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_one_equ(char *str1, char *str2)
+void	f_flag_plus(t_flgs *input, t_prf *new, char **res)
 {
-	int		i;
-
-	i = 0;
-	if (!ft_strlen(str1))
-		return (1);
-	while (str1[i])
-	{
-		if (ft_strchr(str2, str1[i]))
-			return (1);
-		i++;
-	}
-	return (0);
+	if (ft_strchr(input->flags, '+') && ft_strchr(new->flags, '+'))
+		if (*res[0] != '-')
+			f_join_free_b(res, "+");
 }
 
-char	*f_strnew_null(int i)
+void	f_flag_sps(t_flgs *input, t_prf *new, char **res)
 {
-	char	*s;
-	int		n;
-
-	n = 1;
-	s = ft_strdup("0");
-	while (n < i)
-	{
-		f_join_free(&s, "0");
-		n++;
-	}
-	return (s);
+	if (input && new && *res)
+		;
 }
 
-char	*f_strnew_spc(int i)
-{
-	char	*s;
-	int		n;
-
-	n = 1;
-	s = ft_strdup(" ");
-	while (n < i)
-	{
-		f_join_free(&s, " ");
-		n++;
-	}
-	return (s);
-}
-
-void	f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res)
+void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
 {
 	char			*tmp;
 
 	tmp = *res;
-	n[1] = 0;
 	if ((*res[0] == '+' || *res[0] == '-') && input->accuracy)
 	{
 		n[1] = (*res[0] == '-') ? 1 : 3;
-		n[0] = ft_strlen(*res) - input->accuracy;
+		n[0] = ft_strlen(*res) - input->accuracy - 1;
 		*res = ft_strcpy(ft_strnew(ft_strlen(*res) - 1), *res + 1);
 		free(tmp);
 	}
-	if (*res[0] == '0' && input->accuracy)
+	if (*res[0] == '0' && input->accuracy && ft_strlen(*res) > 1)
 	{
 		n[1] = 2;
 		*res = ft_strcpy(ft_strnew(ft_strlen(*res) - 2), *res + 2);
@@ -89,7 +55,7 @@ void	f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res)
 	(n[1] == 3) ? f_join_free_b(res, "+") : 1 - 1;
 }
 
-void	f_accurancy_length(t_flgs *input, t_prf *new, char **res)
+void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 {
 	intmax_t		n[2];
 	char			*tmp;
@@ -99,7 +65,7 @@ void	f_accurancy_length(t_flgs *input, t_prf *new, char **res)
 									// printf("len - \t%jd [%s]\n", n[0], *res);
 	n[1] = 0;
 	if (ft_strchr(new->size, 'z'))
-		f_accurancy_dop_length(input, n, res);
+		f_accurancy_dop(input, n, res);
 	else
 	{
 		if (n[0] < 0)

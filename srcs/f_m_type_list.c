@@ -58,8 +58,8 @@ t_prf			*type_list(void)
 	f_listadd_t(&test_new, f_listnew("d", "-+0 ", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("D", "-+0 ", "hlzj", &f_type_bd));
 	f_listadd_t(&test_new, f_listnew("u", "-0 ", "hlzj", &f_type_u));
-	f_listadd_t(&test_new, f_listnew("i", "-0 ", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("U", "-0 ", "hlzj", &f_type_u));
+	f_listadd_t(&test_new, f_listnew("i", "-0 ", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("s", "-0", "l", &f_type_s));
 	f_listadd_t(&test_new, f_listnew("S", "-0", "l", &f_type_s));
 	f_listadd_t(&test_new, f_listnew("c", "-0", "l", &f_type_c));
@@ -70,6 +70,8 @@ t_prf			*type_list(void)
 
 intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 {
+	if (input->type[0] == 'U')
+		return (va_arg(ap, unsigned long int));
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));
 	if (ft_strstr(input->size, "j"))
