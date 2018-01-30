@@ -81,10 +81,12 @@ intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 	if (ft_strstr(input->size, "l"))
 		return (va_arg(ap, long));
 	if (ft_strstr(input->size, "h") && !ft_strstr(input->size, "hh"))
-		return ((short int)va_arg(ap, int));
+		return (input->type[0] == 'u') ? ((unsigned short int)va_arg(ap, int)) :\
+	((short int)va_arg(ap, int));
 	if (ft_strstr(input->size, "hh"))
-		return ((signed char)va_arg(ap, int));
-	if (input->type[0] == 'd')
+		return (input->type[0] == 'u') ? ((unsigned char)va_arg(ap, int)) :\
+	((signed char)va_arg(ap, int));
+	if ((input->type[0] == 'd') || (input->type[0] == 'i'))
 		return (va_arg(ap, int));
 	if (input->type[0] == 'D')
 		return (va_arg(ap, long int));
