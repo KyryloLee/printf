@@ -27,3 +27,23 @@ void	f_type_nope(char **res, va_list ap)
 	if (ap)
 		;
 }
+
+void	f_type_bs(char **res, va_list ap)
+{
+	char *s;
+
+	s = va_arg(ap, char*);
+	if (s != NULL)
+	{
+		if (MB_CUR_MAX > 1)
+			f_join_free(res, s);
+		// else
+		// 	while(*s)
+		// 	{
+		// 		c_jf(res, (char)(*s));
+		// 		s++;
+		// 	}
+	}
+	else
+		f_join_free(res, "(null)");
+}
