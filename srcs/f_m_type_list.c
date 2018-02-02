@@ -70,7 +70,7 @@ t_prf			*type_list(void)
 
 intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 {
-	if (input->type[0] == 'U' || input->type[0] == 'p')
+	if (input->type[0] == 'U' || input->type[0] == 'p'|| input->type[0] == 'O')
 		return (va_arg(ap, unsigned long int));
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));

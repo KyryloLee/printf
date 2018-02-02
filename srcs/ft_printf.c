@@ -21,8 +21,8 @@ int		ft_printf(char *format, ...)
 	va_start(ap, format);
 	s = f_srch(format, ap);
 	va_end(ap);
-	ft_putstr(s);
 	d = ft_strlen(s);
+	write(1, s, d);
 	free(s);
 	return (d);
 }
