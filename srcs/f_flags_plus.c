@@ -21,8 +21,9 @@ void	f_flag_plus(t_flgs *input, t_prf *new, char **res)
 
 void	f_flag_sps(t_flgs *input, t_prf *new, char **res)
 {
-	if (input && new && *res)
-		;
+	if (ft_strchr(input->flags, ' ') && ft_strchr(new->flags, ' '))
+		if (!ft_strchr("0-+ ", *res[0]))
+			f_join_free_b(res, " ");
 }
 
 void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
@@ -64,14 +65,20 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 	n[0] = ft_strlen(*res) - input->accuracy;
 									// printf("len - \t%jd [%s]\n", n[0], *res);
 	n[1] = 0;
+	if (ft_strchr(input->flags, '.') && ft_strlen(*res) == 1 && *res[0] == '0'
+		&& input->accuracy == 0)
+	{
+		*res[0] = '\0';
+		return ;
+	}
 	if (ft_strchr(new->size, 'z'))
 		f_accurancy_dop(input, n, res);
 	else
 	{
-		if (n[0] < 0)
+		if (input->accuracy)
 		{
 			*res = ft_strncpy(ft_strnew(input->accuracy),\
-				*res, input->accuracy);
+			*res, input->accuracy);
 			free(tmp);
 		}
 	}

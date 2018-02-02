@@ -45,6 +45,8 @@ int		f_a_l_s(char *tmp, t_flgs **fnt)
 		c_jf(&(*fnt)->flags, tmp[i++]);
 	else if (tmp[i] == '.')
 	{
+		c_jf(&(*fnt)->flags, '.');
+		(tmp[i + 1] == '0') ? i++ : 1 - 1;
 		(*fnt)->accuracy = ft_atoi(tmp + i + 1);
 		i = i + f_len_nbr((*fnt)->accuracy) + 1;
 	}

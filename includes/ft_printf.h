@@ -80,6 +80,7 @@ void				f_type_bd(char **res, intmax_t input);
 intmax_t			dop_size_nbr(t_flgs *input, va_list ap);
 intmax_t			dop_size_nbr2(t_flgs *input, va_list ap);
 void				f_flag_plus(t_flgs *input, t_prf *new, char **res);
+void				f_flag_sps(t_flgs *input, t_prf *new, char **res);
 void				f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res);
 void				f_accurancy_length(t_flgs *input, t_prf *new, char **res);
 

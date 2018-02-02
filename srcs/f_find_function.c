@@ -66,6 +66,7 @@ void	f_flags(t_flgs *input, t_prf *new, char **res)
 		else
 			f_length(input, new, res);
 	}
+	f_flag_sps(input, new, res);
 }
 
 int		find_func(t_flgs *input, char **res, va_list ap)
