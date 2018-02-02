@@ -12,6 +12,18 @@
 
 #include "ft_printf.h"
 
+void	change_char(char **s)
+{
+	char *str;
+
+	str = *s;
+	while (*str)
+	{
+		if (*str == '\1')
+			*str = '\0';
+		str++;
+	}
+}
 int		ft_printf(char *format, ...)
 {
 	va_list	ap;
@@ -22,6 +34,7 @@ int		ft_printf(char *format, ...)
 	s = f_srch(format, ap);
 	va_end(ap);
 	d = ft_strlen(s);
+	change_char(&s);
 	write(1, s, d);
 	free(s);
 	return (d);
