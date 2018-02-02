@@ -22,7 +22,7 @@ void	f_flag_plus(t_flgs *input, t_prf *new, char **res)
 void	f_flag_sps(t_flgs *input, t_prf *new, char **res)
 {
 	if (ft_strchr(input->flags, ' ') && ft_strchr(new->flags, ' '))
-		if (!ft_strchr("0-+ ", *res[0]))
+		if (!ft_strchr("-+ ", *res[0]))
 			f_join_free_b(res, " ");
 }
 
