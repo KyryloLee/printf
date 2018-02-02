@@ -66,9 +66,12 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 									// printf("len - \t%jd [%s]\n", n[0], *res);
 	n[1] = 0;
 	if (ft_strchr(input->flags, '.') && ft_strlen(*res) == 1 && *res[0] == '0'
-		&& input->accuracy == 0)
+		&& input->accuracy == 0 && ft_strchr(new->flags, '.'))
 	{
-		*res[0] = '\0';
+		if ((ft_strchr(input->type, 'o') && ft_strchr(input->flags, '#')))
+			*res[0] = '0';
+		else
+			*res[0] = '\0';
 		return ;
 	}
 	if (ft_strchr(new->size, 'z'))
