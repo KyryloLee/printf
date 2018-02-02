@@ -51,7 +51,7 @@ t_prf				*f_listnew(char *type, char \
 	*flags, char *size, void (*f)());
 void				del_prf(t_prf **in);
 char				*str_to_upper(char *in);
-void				f_type_p(char **res, intmax_t input);
+void				f_type_p(char **res, unsigned long long input);
 void				f_type_d(char **res, intmax_t input);
 void				f_type_bx(char **res, intmax_t input);
 void				f_type_o(char **res, intmax_t input);

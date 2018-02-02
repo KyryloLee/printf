@@ -44,12 +44,12 @@ void	f_type_prcn(char **res, va_list ap)
 		;
 }
 
-void	f_type_p(char **res, intmax_t input)
+void	f_type_p(char **res, unsigned long long input)
 {
 	char			*str;
 
-	str = f_itoa_base_a(input, 16);
+	str = ft_itoa_u(input);
 	f_join_free(res, str);
-	f_join_free_b(res, "0x10");
+	f_join_free_b(res, "0x");
 	free(str);
 }

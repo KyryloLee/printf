@@ -52,7 +52,6 @@ void	f_type_u(char **res, unsigned long long input)
 {
 	char *str;
 
-	// printf("f_type_u-\t[%hu]\n", input);
 	str = ft_itoa_u(input);
 	f_join_free(res, str);
 	free(str);
