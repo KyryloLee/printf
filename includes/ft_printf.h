@@ -45,8 +45,8 @@ void				f_type_s(char **res, va_list ap);
 void				f_type_c(char **res, va_list ap);
 void				f_type_bc(char **res, va_list ap);
 void				f_type_prcn(char **res, va_list ap);
-void				recursio_i_a(char **str, uintmax_t i, int base);
-char				*f_itoa_base_a(intmax_t n, int base);
+void				recursio_i_a(char **str, unsigned long long  i, int base);
+char				*f_itoa_base_a(unsigned long long int n, int base);
 t_prf				*f_listnew(char *type, char \
 	*flags, char *size, void (*f)());
 void				del_prf(t_prf **in);

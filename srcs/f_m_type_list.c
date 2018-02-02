@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char			*f_itoa_base_a(intmax_t n, int base)
+char			*f_itoa_base_a(unsigned long long int n, int base)
 {
 	char			*c;
 	char			add[2];
@@ -20,7 +20,7 @@ char			*f_itoa_base_a(intmax_t n, int base)
 
 	add[1] = '\0';
 	i = n;
-		c = ft_strdup("");
+	c = ft_strdup("");
 	recursio_i_a(&c, i, base);
 	return (c);
 }
@@ -70,7 +70,7 @@ t_prf			*type_list(void)
 
 intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 {
-	if (input->type[0] == 'U')
+	if (input->type[0] == 'U' || input->type[0] == 'p')
 		return (va_arg(ap, unsigned long int));
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));

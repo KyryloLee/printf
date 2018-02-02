@@ -80,7 +80,7 @@ void	f_wchar_t(char **res, intmax_t n)
 	}
 }
 
-void	recursio_i_a(char **str, uintmax_t i, int base)
+void	recursio_i_a(char **str, unsigned long long i, int base)
 {
 	char			*f_base;
 	char			c[2];

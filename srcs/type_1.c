@@ -48,7 +48,7 @@ void	f_type_p(char **res, unsigned long long input)
 {
 	char			*str;
 
-	str = ft_itoa_u(input);
+	str = f_itoa_base_a(input, 16);
 	f_join_free(res, str);
 	f_join_free_b(res, "0x");
 	free(str);
