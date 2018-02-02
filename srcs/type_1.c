@@ -38,15 +38,15 @@ void	f_type_c(char **res, va_list ap)
 void	f_type_bc(char **res, va_list ap)
 {
 	char	c[2];
-	int		i;
 
 	c[1] = '\0';
-	i = va_arg(ap, int);
-	i = !i ? 1 : i;
 	if (MB_CUR_MAX > 1)
-		f_wchar_t(res, i);
+		f_wchar_t(res, va_arg(ap, int));
 	else
+	{
 		c[0] = (char)va_arg(ap, int);
+		f_join_free(res, c);
+	}
 }
 
 void	f_type_prcn(char **res, va_list ap)
