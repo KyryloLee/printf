@@ -58,7 +58,7 @@ void	f_flags(t_flgs *input, t_prf *new, char **res)
 	if (input->length)
 	{
 		if (input->accuracy == 0 && ft_strstr(input->flags, "0")\
-			&& !ft_strstr(input->flags, "-"))
+			&& !ft_one_equ(input->flags, "-"))
 		{
 			input->accuracy = ft_strstr(*res, "0x") ? input->length - 2 : input->length;
 			f_accurancy_length(input, new, res);
@@ -87,7 +87,7 @@ int		find_func(t_flgs *input, char **res, va_list ap)
 			}
 			else
 				new->f(res, ap);
-																					// printf("[%s]\n", new->type);
+																					// printf("[%s]\n", *res);
 			f_flags(input, new, res);
 			break ;
 		}
