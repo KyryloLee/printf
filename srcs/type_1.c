@@ -28,13 +28,22 @@ void	f_type_c(char **res, va_list ap)
 	char	c[2];
 
 	c[1] = '\0';
-	c[0] = va_arg(ap, int);
+	c[0] = (char)va_arg(ap, int);
 	f_join_free(res, c);
 }
 
 void	f_type_bc(char **res, va_list ap)
 {
-	f_wchar_t(res, va_arg(ap, int));
+	char	c[2];
+
+	c[1] = '\0';
+	if (MB_CUR_MAX > 1)
+		f_wchar_t(res, va_arg(ap, int));
+	else
+	{
+		c[0] = (char)va_arg(ap, int);
+		f_join_free(res, c);
+	}
 }
 
 void	f_type_prcn(char **res, va_list ap)
