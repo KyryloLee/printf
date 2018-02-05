@@ -86,7 +86,7 @@ int		find_func(t_flgs *input, char **res, va_list ap)
 				new->f(res, i);
 			}
 			else
-				new->f(res, ap);
+				f_type_sc(input, new, res, ap);
 																					// printf("[%s]\n", *res);
 			f_flags(input, new, res);
 			break ;

@@ -86,5 +86,5 @@ void				f_flag_sps(t_flgs *input, t_prf *new, char **res);
 void				f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res);
 void				f_accurancy_length(t_flgs *input, t_prf *new, char **res);
 void				f_type_bs(char **res, va_list ap);
-
+void				f_type_sc(t_flgs *input, t_prf *new, char **res, va_list ap);
 #endif

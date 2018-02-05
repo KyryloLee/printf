@@ -49,7 +49,7 @@ t_prf			*type_list(void)
 	t_prf *test_new;
 
 	test_new = NULL;
-	f_listadd_t(&test_new, f_listnew("p", "- ", "z", &f_type_p));
+	f_listadd_t(&test_new, f_listnew("p", "- .", "z", &f_type_p));
 	f_listadd_t(&test_new, f_listnew("X", "-0#.", "hlzj", &f_type_bx));
 	f_listadd_t(&test_new, f_listnew("x", "-0#.", "hlzj", &f_type_x));
 	f_listadd_t(&test_new, f_listnew("o", "-0#.", "hlzj", &f_type_o));
@@ -61,9 +61,9 @@ t_prf			*type_list(void)
 	f_listadd_t(&test_new, f_listnew("U", "-0", "hlzj", &f_type_u));
 	f_listadd_t(&test_new, f_listnew("i", "-+0. ", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("s", "-0", "l", &f_type_s));
-	f_listadd_t(&test_new, f_listnew("S", "-0", "l", &f_type_bs));
+	f_listadd_t(&test_new, f_listnew("S", "-0", "", &f_type_bs));
 	f_listadd_t(&test_new, f_listnew("c", "-0", "l", &f_type_c));
-	f_listadd_t(&test_new, f_listnew("C", "-0", "l", &f_type_bc));
+	f_listadd_t(&test_new, f_listnew("C", "-0", "", &f_type_bc));
 	f_listadd_t(&test_new, f_listnew("r", "", "z", &f_type_nope));
 	return (test_new);
 }

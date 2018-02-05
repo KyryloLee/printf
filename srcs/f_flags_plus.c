@@ -86,3 +86,24 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 		}
 	}
 }
+
+void	f_type_sc(t_flgs *input, t_prf *new, char **res, va_list ap)
+{
+	if (ft_strchr(new->type, 'c'))
+	{
+		if (ft_strchr(input->size, 'l'))
+			f_type_bc(res, ap);
+		else
+			f_type_c(res, ap);
+	}
+	else if (ft_strchr(new->type, 's'))
+	{
+		if (ft_strchr(input->size, 'l'))
+			f_type_bs(res, ap);
+		else
+			f_type_s(res, ap);
+	}
+	else
+		new->f(res, ap);
+
+}
