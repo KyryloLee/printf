@@ -41,3 +41,13 @@ void	f_type_bs(char **res, va_list ap)
 	else
 		f_join_free(res, "(null)");
 }
+
+void	f_type_bb(char **res, unsigned long long input)
+{
+	char *str;
+
+	str = ft_strdup("");
+	f_binar(&str, input);
+	f_join_free(res, str);
+	free(str);
+}

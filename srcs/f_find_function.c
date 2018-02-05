@@ -81,7 +81,7 @@ int		find_func(t_flgs *input, char **res, va_list ap)
 	while (new)
 		if (!(ft_strncmp(input->type, new->type, ft_strlen(new->type))))
 		{
-			if (ft_one_equ(input->type, "dDioOuUxXp"))
+			if (ft_one_equ(input->type, "dDioOuUxXpb"))
 			{
 				i = f_size_nbr(input, ap);
 				new->f(res, i);

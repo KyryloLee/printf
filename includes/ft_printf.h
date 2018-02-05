@@ -17,7 +17,6 @@
 # include "libft.h"
 # include <locale.h>
 # include <wchar.h>
-# include <stdio.h>//-------------------------------------------del me!!!!!!!!!!💩
 
 typedef struct		s_prt
 {
@@ -90,4 +89,9 @@ void				f_accurancy_length(t_flgs *input,\
 void				f_type_bs(char **res, va_list ap);
 void				f_type_sc(t_flgs *input, t_prf *new,\
 					char **res, va_list ap);
+void				if_type_z(t_flgs *input, t_prf *new, \
+					char **res, intmax_t *n);
+void				f_type_bb(char **res, unsigned long long input);
+void				f_binar(char **res, unsigned long long input);
+
 #endif

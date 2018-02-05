@@ -66,9 +66,7 @@ void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
 void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 {
 	intmax_t		n[2];
-	char			*tmp;
 
-	tmp = *res;
 	n[0] = ft_strlen(*res) - input->accuracy;
 	n[1] = 0;
 	if (ft_strchr(input->flags, '.') && ft_strlen(*res) == 1 && *res[0] == '0'
@@ -80,22 +78,7 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 			*res[0] = '\0';
 		return ;
 	}
-	if (ft_strchr(new->size, 'z'))
-		f_accurancy_dop(input, n, res);
-	else
-	{
-		if (input->accuracy)
-		{
-			*res = ft_strncpy(ft_strnew(input->accuracy),\
-			*res, input->accuracy);
-			free(tmp);
-		}
-		else if (ft_strchr(input->type, 's') && ft_strchr(input->flags, '.'))
-		{
-			*res = ft_strdup("");
-			free(tmp);
-		}
-	}
+	if_type_z(input, new, res, n);
 }
 
 void	f_type_sc(t_flgs *input, t_prf *new, char **res, va_list ap)

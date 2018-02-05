@@ -71,7 +71,7 @@ t_flgs	*analys_str(char **str, char **res)
 	{
 		if (ft_strchr("-+ #0.123456789zjlh", tmp[0]))
 			tmp += f_a_l_s(tmp, &fnt);
-		if (ft_strchr("sSpdDioOuUxXcC%", tmp[0]))
+		if (ft_strchr("sSpdDioOuUxXcCb%", tmp[0]))
 		{
 			c_jf(&(fnt)->type, tmp[0]);
 			tmp++;

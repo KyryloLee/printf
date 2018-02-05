@@ -65,12 +65,13 @@ t_prf			*type_list(void)
 	f_listadd_t(&test_new, f_listnew("c", "-0", "l", &f_type_c));
 	f_listadd_t(&test_new, f_listnew("C", "-0", "", &f_type_bc));
 	f_listadd_t(&test_new, f_listnew("r", "", "z", &f_type_nope));
+	f_listadd_t(&test_new, f_listnew("b", "", "hlzj", &f_type_bb));
 	return (test_new);
 }
 
 intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 {
-	if (input->type[0] == 'U' || input->type[0] == 'p' || input->type[0] == 'O')
+	if (ft_one_equ(input->type, "UpOb"))
 		return (va_arg(ap, unsigned long int));
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));
