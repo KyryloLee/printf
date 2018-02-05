@@ -63,11 +63,9 @@ void	f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res)
 	char			*tmp;
 
 	tmp = *res;
-	n[1] = 0;
 	if ((*res[0] == '+' || *res[0] == '-') && input->accuracy)
 	{
 		n[1] = (*res[0] == '-') ? 1 : 3;
-		n[0] = ft_strlen(*res) - input->accuracy;
 		*res = ft_strcpy(ft_strnew(ft_strlen(*res) - 1), *res + 1);
 		free(tmp);
 	}

@@ -63,10 +63,8 @@ int		f_a_l_s(char *tmp, t_flgs **fnt)
 t_flgs	*analys_str(char **str, char **res)
 {
 	t_flgs	*fnt;
-	int		i;
 	char	*tmp;
 
-	i = 0;
 	fnt = flag_list();
 	tmp = *str;
 	while (*tmp)
@@ -91,24 +89,13 @@ t_flgs	*analys_str(char **str, char **res)
 	return (fnt);
 }
 
-void	put_analys(t_flgs *input)
-{
-	printf("flags - \t%s\n", input->flags);
-	printf("length - \t%d\n", input->length);
-	printf("accuracy - \t%d\n", input->accuracy);
-	printf("size - \t%s\n", input->size);
-	printf("type - \t%s\n\n", input->type);
-}
-
 char	*f_srch(char *str, va_list ap)
 {
 	char	*res;
 	char	*just_words;
-	char	chr[2];
 	t_flgs	*input;
 
 	just_words = ft_strdup("");
-	chr[1] = '\0';
 	while (*str)
 	{
 		res = ft_strdup("");
@@ -122,8 +109,7 @@ char	*f_srch(char *str, va_list ap)
 		}
 		while (str[0] != '%' && *str)
 		{
-			chr[0] = *str;
-			f_join_free(&just_words, chr);
+			c_jf(&just_words, str[0]);
 			str++;
 		}
 		free(res);

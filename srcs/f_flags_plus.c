@@ -23,8 +23,15 @@ void	f_flag_sps(t_flgs *input, t_prf *new, char **res)
 {
 	if (ft_strchr(input->flags, ' ') && ft_strchr(new->flags, ' '))
 		if (!ft_strchr("-+ ", *res[0]))
-			f_join_free_b(res, " ");
-	// if (ft_strchr(input->flags, '0'))
+		{
+			if (ft_strchr(input->flags, '0') && ft_strchr(input->type, 'd'))
+			{
+				if (ft_strlen(*res) > 1 && *res[0] == '0')
+					*res[0] = ' ';
+			}
+			else
+				f_join_free_b(res, " ");
+		}
 }
 
 void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
@@ -43,7 +50,6 @@ void	f_accurancy_dop(t_flgs *input, intmax_t *n, char **res)
 	{
 		n[1] = 2;
 		*res = ft_strcpy(ft_strnew(ft_strlen(*res) - 2), *res + 2);
-		n[0] = ft_strlen(*res) - input->accuracy;
 		free(tmp);
 	}
 	if (n[0] < 0)
@@ -68,7 +74,7 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 	if (ft_strchr(input->flags, '.') && ft_strlen(*res) == 1 && *res[0] == '0'
 		&& input->accuracy == 0 && ft_strchr(new->flags, '.'))
 	{
-		if ((ft_strchr(input->type, 'o') && ft_strchr(input->flags, '#')))
+		if ((ft_one_equ(input->type, "oO") && ft_strchr(input->flags, '#')))
 			*res[0] = '0';
 		else
 			*res[0] = '\0';
@@ -82,6 +88,11 @@ void	f_accurancy(t_flgs *input, t_prf *new, char **res)
 		{
 			*res = ft_strncpy(ft_strnew(input->accuracy),\
 			*res, input->accuracy);
+			free(tmp);
+		}
+		else if (ft_strchr(input->type, 's') && ft_strchr(input->flags, '.'))
+		{
+			*res = ft_strdup("");
 			free(tmp);
 		}
 	}

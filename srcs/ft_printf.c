@@ -24,6 +24,7 @@ void	change_char(char **s)
 		str++;
 	}
 }
+
 int		ft_printf(char *format, ...)
 {
 	va_list	ap;
