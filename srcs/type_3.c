@@ -35,7 +35,7 @@ void	f_type_bs(char **res, va_list ap)
 	s = va_arg(ap, wchar_t*);
 	if (s != NULL)
 	{
-		if (MB_CUR_MAX > 1)
+		// if (MB_CUR_MAX > 1)
 			while (*s)
 				f_wchar_t(res, *s++);
 	}
