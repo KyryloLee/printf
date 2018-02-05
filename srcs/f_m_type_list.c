@@ -49,12 +49,12 @@ t_prf			*type_list(void)
 	t_prf *test_new;
 
 	test_new = NULL;
-	f_listadd_t(&test_new, f_listnew("p", "- .", "z", &f_type_p));
+	f_listadd_t(&test_new, f_listnew("p", "-.", "z", &f_type_p));
 	f_listadd_t(&test_new, f_listnew("X", "-0#.", "hlzj", &f_type_bx));
 	f_listadd_t(&test_new, f_listnew("x", "-0#.", "hlzj", &f_type_x));
 	f_listadd_t(&test_new, f_listnew("o", "-0#.", "hlzj", &f_type_o));
 	f_listadd_t(&test_new, f_listnew("O", "-0#.", "hlzj", &f_type_o));
-	f_listadd_t(&test_new, f_listnew("%", "0", "z", &f_type_prcn));
+	f_listadd_t(&test_new, f_listnew("%", "0", "", &f_type_prcn));
 	f_listadd_t(&test_new, f_listnew("d", "-+0 .", "hlzj", &f_type_d));
 	f_listadd_t(&test_new, f_listnew("D", "-+0 ", "hlzj", &f_type_bd));
 	f_listadd_t(&test_new, f_listnew("u", "-0.", "hlzj", &f_type_u));
@@ -70,7 +70,7 @@ t_prf			*type_list(void)
 
 intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 {
-	if (input->type[0] == 'U' || input->type[0] == 'p'|| input->type[0] == 'O')
+	if (input->type[0] == 'U' || input->type[0] == 'p' || input->type[0] == 'O')
 		return (va_arg(ap, unsigned long int));
 	if (ft_strstr(input->size, "z"))
 		return (va_arg(ap, size_t));
@@ -81,11 +81,13 @@ intmax_t		f_size_nbr(t_flgs *input, va_list ap)
 	if (ft_strstr(input->size, "l"))
 		return (va_arg(ap, long));
 	if (ft_strstr(input->size, "h") && !ft_strstr(input->size, "hh"))
-		return (input->type[0] == 'u') ? ((unsigned short int)va_arg(ap, int)) :\
-	((short int)va_arg(ap, int));
+		return (ft_one_equ(input->type, "uoxXD")) ? \
+		((unsigned short int)va_arg(ap, int)) : ((short int)va_arg(ap, int));
+	if (ft_strstr(input->size, "hh") && ft_strstr(input->type, "D"))
+		return ((unsigned short)va_arg(ap, int));
 	if (ft_strstr(input->size, "hh"))
-		return (input->type[0] == 'u') ? ((unsigned char)va_arg(ap, int)) :\
-	((signed char)va_arg(ap, int));
+		return (ft_one_equ(input->type, "uoxXD")) ? \
+		((unsigned char)va_arg(ap, int)) : ((signed char)va_arg(ap, int));
 	if ((input->type[0] == 'd') || (input->type[0] == 'i'))
 		return (va_arg(ap, int));
 	if (input->type[0] == 'D')

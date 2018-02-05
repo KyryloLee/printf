@@ -30,6 +30,8 @@ int		ft_printf(char *format, ...)
 	int		d;
 	char	*s;
 
+	if (!ft_strlen(format) || format == NULL)
+		return (0);
 	va_start(ap, format);
 	s = f_srch(format, ap);
 	va_end(ap);

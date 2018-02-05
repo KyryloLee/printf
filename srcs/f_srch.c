@@ -81,7 +81,6 @@ t_flgs	*analys_str(char **str, char **res)
 		}
 		if (!ft_strchr("+- #.0123456789zjlhSspDdiOoUuXxCc", tmp[0]))
 		{
-													// printf("before break the while -\t[%s]\n", tmp);
 			c_jf(res, tmp[0]);
 			c_jf(&(fnt)->type, 'r');
 			tmp++;
@@ -89,7 +88,6 @@ t_flgs	*analys_str(char **str, char **res)
 		}
 	}
 	*str = tmp;
-																				// printf("result *str after analys function-\t[%s]\n", tmp);
 	return (fnt);
 }
 
@@ -100,7 +98,6 @@ void	put_analys(t_flgs *input)
 	printf("accuracy - \t%d\n", input->accuracy);
 	printf("size - \t%s\n", input->size);
 	printf("type - \t%s\n\n", input->type);
-
 }
 
 char	*f_srch(char *str, va_list ap)
@@ -110,7 +107,6 @@ char	*f_srch(char *str, va_list ap)
 	char	chr[2];
 	t_flgs	*input;
 
-	
 	just_words = ft_strdup("");
 	chr[1] = '\0';
 	while (*str)
@@ -120,12 +116,9 @@ char	*f_srch(char *str, va_list ap)
 		{
 			str++;
 			input = analys_str(&str, &res);
-																				// put_analys(input);
-																				// printf("result str after analys function-\t[%s]\n", str);
 			find_func(input, &res, ap);
 			del_flag_list(&input);
-			f_join_free(&just_words, res);	
-																		// printf("result ater analys-\t|%s|\n", res);
+			f_join_free(&just_words, res);
 		}
 		while (str[0] != '%' && *str)
 		{

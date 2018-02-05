@@ -15,8 +15,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "libft.h"
-#include <locale.h>
-#include <wchar.h>
+# include <locale.h>
+# include <wchar.h>
 # include <stdio.h>//-------------------------------------------del me!!!!!!!!!!💩
 
 typedef struct		s_prt
@@ -47,10 +47,10 @@ void				f_type_s(char **res, va_list ap);
 void				f_type_c(char **res, va_list ap);
 void				f_type_bc(char **res, va_list ap);
 void				f_type_prcn(char **res, va_list ap);
-void				recursio_i_a(char **str, unsigned long long  i, int base);
+void				recursio_i_a(char **str, unsigned long long i, int base);
 char				*f_itoa_base_a(unsigned long long int n, int base);
 t_prf				*f_listnew(char *type, char \
-	*flags, char *size, void (*f)());
+					*flags, char *size, void (*f)());
 void				del_prf(t_prf **in);
 char				*str_to_upper(char *in);
 void				f_type_p(char **res, unsigned long long input);
@@ -83,8 +83,11 @@ intmax_t			dop_size_nbr(t_flgs *input, va_list ap);
 intmax_t			dop_size_nbr2(t_flgs *input, va_list ap);
 void				f_flag_plus(t_flgs *input, t_prf *new, char **res);
 void				f_flag_sps(t_flgs *input, t_prf *new, char **res);
-void				f_accurancy_dop_length(t_flgs *input, intmax_t *n, char **res);
-void				f_accurancy_length(t_flgs *input, t_prf *new, char **res);
+void				f_accurancy_dop_length(t_flgs *input,\
+					intmax_t *n, char **res);
+void				f_accurancy_length(t_flgs *input,\
+					t_prf *new, char **res);
 void				f_type_bs(char **res, va_list ap);
-void				f_type_sc(t_flgs *input, t_prf *new, char **res, va_list ap);
+void				f_type_sc(t_flgs *input, t_prf *new,\
+					char **res, va_list ap);
 #endif
