@@ -11,23 +11,27 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	if_type_z(t_flgs *input, t_prf *new, char **res, intmax_t *n)
 {
 	char			*tmp;
+	int				i;
 
 	tmp = *res;
+	i = input->accuracy;
+	i = ((i / 3) && ft_strchr(input->type, 'S')) ? ((i / 3) * 3) : i;
 	if (ft_strchr(new->size, 'z'))
 		f_accurancy_dop(input, n, res);
 	else
 	{
 		if (input->accuracy)
 		{
-			*res = ft_strncpy(ft_strnew(input->accuracy),\
-			*res, input->accuracy);
+			*res = ft_strncpy(ft_strnew(i),\
+			*res, i);
 			free(tmp);
 		}
-		else if (ft_strchr(input->type, 's') && ft_strchr(input->flags, '.'))
+		else if (ft_one_equ(input->type, "sS") && ft_strchr(input->flags, '.'))
 		{
 			*res = ft_strdup("");
 			free(tmp);
